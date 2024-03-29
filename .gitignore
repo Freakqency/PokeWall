@@ -59,7 +59,7 @@ env.bak/
 venv.bak/
 .pokewall-env/
 .pokewall/
-./data/*
+./data/
 
 #Editor
 .vscode/*
