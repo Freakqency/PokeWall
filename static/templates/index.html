@@ -1,0 +1,31 @@
+{% extends "./components/layout.html" %}
+{% include './components/navbar.html' %}
+{% include './components/modal.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row g-0 mt-5">
+        <div class="col">
+            {% include './components/form.html' %}
+        </div>
+    </div>
+    <div class="row mt-2 gy-3">
+        {% for i in range(count) %}
+        <div class="col-1">
+            <div class="card">
+                <div class="card-body">
+                    <center>
+                        <img src="{{ url_for('data', path='/spirtes/'+ pokemons[i] + '.png') }}" alt="spirte" width="70"
+                            height="70">
+                        <br>
+                        <h6 class="text-primary-emphasis">{{ names[i] }}</h6>
+                        <p><a href="{{ urls[i] }}"
+                                class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">link</a>
+                        </p>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

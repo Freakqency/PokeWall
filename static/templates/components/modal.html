@@ -1,0 +1,19 @@
+{% block modal %}
+<div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">How it works?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Choose your pokemon and entire your email to receive your secret API key.
+                Send a HTTP POST request using that secret key to have your pokemon appear on the wall.
+                Limited space available. See
+                the following example:
+                <code>curl http://google.com</code>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

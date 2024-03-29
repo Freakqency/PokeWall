@@ -1,0 +1,18 @@
+{% block form %}
+<div class="card">
+    <div class="card-body">
+        <form class="row g-5 needs-validation" action="{{ secret_url }}" method="post">
+            <div class="col-2 pt-2">
+                <h6> Claim Your Spot: </h6>
+            </div>
+            <div class="col-8">
+                <input name="email" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                    required type="email" class="form-control col-md-6" placeholder="Enter Email">
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-success">Get Secret</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

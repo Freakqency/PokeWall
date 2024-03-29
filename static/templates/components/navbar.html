@@ -1,0 +1,13 @@
+{% block navbar %}
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">
+            <img src="{{ url_for('static', path='/assets/logo.png' ) }}" alt="logo" width="30" height="30">
+            PokeWall
+        </a>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            How it works?
+        </button>
+    </div>
+</nav>
+{% endblock %}
