@@ -4,13 +4,9 @@ from sqlalchemy.orm import Session
 from fastapi import Depends
 from database import core, users
 from utils import generate_secret, send_mail
-from dotenv import load_dotenv
 import os
 
-
 router = APIRouter()
-
-load_dotenv()
 
 
 # TODO: Rate Limit this API

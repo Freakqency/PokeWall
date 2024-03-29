@@ -28,10 +28,6 @@ jobs:
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
-      env:
-        API_KEY_LENGTH: ${{ env.API_KEY_LENGTH }}
-        DATA_DIR: ${{ env.DATA_DIR }}
-        USER_TABLE_NAME: ${{ env.USER_TABLE_NAME }}
       with:
         push: true
         tags: pokewallacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_470fdea7eaa7487ca1523b82b2af33fb }}/pokewall-app:${{ github.sha }}

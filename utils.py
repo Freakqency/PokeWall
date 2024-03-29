@@ -1,10 +1,7 @@
 import secrets
 import pokebase as pb
 import requests
-from dotenv import load_dotenv
 import os
-
-load_dotenv()
 
 
 def generate_secret(length: int) -> str:
