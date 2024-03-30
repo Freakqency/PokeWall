@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: 'production'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -21,15 +23,6 @@ jobs:
           push: false
           tags: pokewallacr.azurecr.io/app/pokewallapp:latest
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'production'
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      
       - name: Log in to Container Registry
         uses: docker/login-action@v2
         with:
