@@ -31,6 +31,7 @@ jobs:
       with:
         push: true
         tags: pokewallacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_470fdea7eaa7487ca1523b82b2af33fb }}/pokewall-app:${{ github.sha }}
+        platform: linux/amd64
         file: ./Dockerfile
 
   deploy:
