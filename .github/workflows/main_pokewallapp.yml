@@ -23,15 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://pokewallacr.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_470fdea7eaa7487ca1523b82b2af33fb }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_03d248787f0242feb3b5afc3fe5a7f0d }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_cb80d0525ed0447aa0e194556c8554cb }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_1d1f0a38811f467a8dcb855d1eba24bb }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: pokewallacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_470fdea7eaa7487ca1523b82b2af33fb }}/pokewall-app:${{ github.sha }}
-        platform: linux/amd64
+        tags: pokewallacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cb80d0525ed0447aa0e194556c8554cb }}/app/pokewallapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,5 +47,5 @@ jobs:
       with:
         app-name: 'pokewallapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e916b75ce55a4a9dba50c9599506a2af }}
-        images: 'pokewallacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_470fdea7eaa7487ca1523b82b2af33fb }}/pokewall-app:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_47fb38790a814d96b265476cbf722467 }}
+        images: 'pokewallacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cb80d0525ed0447aa0e194556c8554cb }}/app/pokewallapp:${{ github.sha }}'
