@@ -19,7 +19,7 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           push: false
-          tags: pokewallacr.azurecr.io/app/pokewallapp
+          tags: pokewallacr.azurecr.io/app/pokewallapp:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -36,5 +36,6 @@ jobs:
           registry: https://pokewallacr.azurecr.io/
           username: ${{ secrets.ACRUSERNAME }}
           password: ${{ secrets.ACRPASSWORD }}
+
       - name: Push Docker Image to Registry
-        run: docker push pokewallacr.azurecr.io/app/pokewallapp
+        run: docker push pokewallacr.azurecr.io/app/pokewallapp:latest
