@@ -20,7 +20,7 @@ jobs:
           context: .
           file: Dockerfile
           platforms: linux/amd64
-          secret-envs: [DATA_DIR=${{ secrets.DATADIR }}, USER_TABLE_NAME=${{ secrets.USER_TABLE_NAME }}, API_KEY_LENGTH=${{ API_KEY_LENGTH }}]
+          secret-envs: DATA_DIR=${{ secrets.DATADIR }}, USER_TABLE_NAME=${{ secrets.USER_TABLE_NAME }}, API_KEY_LENGTH=${{ API_KEY_LENGTH }}
           push: false
           tags: pokewallacr.azurecr.io/app/pokewallapp:latest
 
