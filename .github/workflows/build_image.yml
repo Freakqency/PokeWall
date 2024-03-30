@@ -1,0 +1,42 @@
+name: Build and Deploy Container Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Build Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          push: false
+          tags: pokewall
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Log in to Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: https://pokewallacr.azurecr.io/
+          username: ${{ secrets.ACRUSERNAME }}
+          password: ${{ secrets.ACRPASSWORD }}
+      
+      - name: Tag Docker Image
+        run: docker tag pokewall pokewallacr.azurecr.io/app/pokewallapp
+      
+      - name: Push Docker Image to Registry
+        run: docker push pokewallacr.azurecr.io/app/pokewallapp
