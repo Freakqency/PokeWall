@@ -1,12 +1,12 @@
 services:
   app:
     build: .
-    container_name: pokewall
+    container_name: pokewall-arm
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload --reload-include *
     environment:
+      - USER_TABLE_NAME=${USER_TABLE_NAME}
       - DATA_DIR=${DATA_DIR}
       - API_KEY_LENGTH=${API_KEY_LENGTH}
-      - USER_TABLE_NAME=${USER_TABLE_NAME}
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload --reload-include *
     ports:
       - 8000:8000
     volumes:
