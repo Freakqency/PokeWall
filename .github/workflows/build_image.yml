@@ -21,7 +21,7 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           build-args: |
-              DATA_DIR=${{secrets.DATA_DIR}}
+              DATA_DIR=${{ secrets.DATA_DIR}}
               USER_TABLE_NAME=${{ secrets.USER_TABLE_NAME }}
               API_KEY_LENGTH=${{ secrets.API_KEY_LENGTH }}
           push: false
