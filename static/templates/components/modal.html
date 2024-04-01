@@ -11,7 +11,14 @@
                 Send a HTTP POST request using that secret key to have your pokemon appear on the wall.
                 Limited space available. See
                 the following example:
-                <code>curl http://google.com</code>
+                <code>curl --location 'https://pokewallapp.azurewebsites.net/api/v1/pokemon/' \
+                    --header 'Content-Type: application/json' \
+                    --data '{
+                        "name": "YOUR NAME",
+                        "key":  "API KEY",
+                        "pokemon": "POKEMON NAME",
+                        "url": "WEBSITE URL"
+                    }'</code>
             </div>
         </div>
     </div>
