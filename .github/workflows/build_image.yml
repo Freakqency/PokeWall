@@ -29,9 +29,6 @@ jobs:
           username: ${{ secrets.ACRUSERNAME }}
           password: ${{ secrets.ACRPASSWORD }}
 
-      - name: Tag Docker Image
-        run: docker tag pokewallacr.azurecr.io/app/pokewallapp:latest pokewallacr.azurecr.io/app/pokewallapp:latest
-
       - name: Build Docker Image
         uses: docker/build-push-action@v2
         with:
@@ -45,6 +42,8 @@ jobs:
           push: false
           tags: pokewallacr.azurecr.io/app/pokewallapp:latest
 
+      - name: Tag Docker Image
+        run: docker tag pokewallacr.azurecr.io/app/pokewallapp:latest pokewallacr.azurecr.io/app/pokewallapp:latest
 
       - name: Push Docker Image to Registry
         run: docker push pokewallacr.azurecr.io/app/pokewallapp:latest
