@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+env:
+  DATA_DIR: ./data
+  USER_TABLE_NAME: users
+  API_KEY_LENGTH: 16
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,7 +18,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
       - name: Build Docker Image
         uses: docker/build-push-action@v2
         with:
@@ -21,9 +29,9 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           build-args: |
-              DATA_DIR=${{ secrets.DATA_DIR}}
-              USER_TABLE_NAME=${{ secrets.USER_TABLE_NAME }}
-              API_KEY_LENGTH=${{ secrets.API_KEY_LENGTH }}
+            DATA_DIR=$DATA_DIR
+            USER_TABLE_NAME=$USER_TABLE_NAME
+            API_KEY_LENGTH=$API_KEY_LENGTH
           push: false
           tags: pokewallacr.azurecr.io/app/pokewallapp:latest
 
